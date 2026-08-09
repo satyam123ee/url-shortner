@@ -5,6 +5,8 @@ import path from "path";
 dotenv.config();
 import urlModel from "./models/url.models.js";
 import staticRoutes from "./routes/static.routes.js";
+import userRoutes from "./routes/user.routes.js";
+
 
 
 
@@ -27,10 +29,16 @@ app.set("views", path.resolve("./views"));
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));//why false because we are not using any nested objects in our form data, we are just sending a simple key-value pair. If we were sending nested objects, we would set it to true.
+app.use("/", staticRoutes);
+ 
 app.use("/", urlRoutes);
-app.use("/", staticRoutes); 
+
+app.use("/user", userRoutes);
+
 app.listen(PORT,()=>{
     console.log(`Server is running on port ${PORT}`);
+     console.log("Server started at http://localhost:3000");
+    
 })
 export default app;
 //now yha pending hai ki hum apne routes ko import karein aur use karein.
