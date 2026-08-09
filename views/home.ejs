@@ -10,8 +10,13 @@
 
 
 <h1>Welcome to the URL Shortener</h1>
+<% if(shortId && redirectURL){ %>
+    <p>Here is your shortened URL: http://localhost:3000/<%= shortId %></p>
+
+<% } %>
+   
 <div>   
-    <form method="POST" action="/url"> 
+    <form method="POST" action="/"> 
         <label>enter your original URL:</label>
         <input
         type="text"
