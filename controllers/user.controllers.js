@@ -30,8 +30,8 @@ async function handleUserLogin(req, res) {
     const { username, password } = req.body;
 
     try {
-        const user = await userModel.findOne({ username });
-
+        const user = await userModel.findOne({ username, password });
+          
         if (!user) {
             return res.status(400).render("login", {
                 error: "User not found"
